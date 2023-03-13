@@ -1,0 +1,123 @@
+*{
+    font-size: small !important;
+  }
+  #overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+  }
+  
+  textarea {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  textarea::after {
+    content: '|';
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 25%;
+    background-color: #505050;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .predictions-list{
+    width: auto !important;
+  }
+  
+  .main {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: scroll;
+    background-color: #ababab;
+  }
+  
+  .input {
+    display: flex;
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  .input-field {
+    flex-grow: 1;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    resize: none;
+  }
+  
+  .send-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .send-icon:hover {
+    background-color: #0069d9;
+  }
+  
+  .send-icon:before {
+    content: "\f1d8";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+    color: #fff;
+  }
+
+  #prediction-output{
+    border: 2px solid #d50000;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border-radius: 5px;
+    background: chartreuse;
+  }
+    

@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>Cardiovascular Disease Prediction</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon/favicon.png') }}" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
     <script>
       tailwind.config={
         theme: {
@@ -14,265 +16,123 @@
         }
       }
     </script>
+    <script src="https://kit.fontawesome.com/4bf47fa459.js" crossorigin="anonymous"></script>
   </head>
-  <body class="bg-neutral-400 flex justify-center items-center">
-    <div class="mx-auto my-auto">
-      <h2 class="text-2xl text-center font-bold">Cardiovascular Disease Prediction (ML)</h2>
-    <form id="form" class="max-w-md mx-auto mt-8 my-auto">
-        <div class="grid grid-cols-2 gap-2">
-            <div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="age">Age(Days):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="number" name="age" value="18291" required>
+  <body class="bg-neutral-400">
+    <!--Main Content-->
+    <div class="container mx-auto my-auto ">
+      <div class="sidebar">
+        <h3 class="text-2xl text-center font-bold">Predictions</h3>
+        <hr>
+        <ul class="predictions-list w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">   
+        </ul>
+      </div>
+      <div class="main">
+        <div class="messages">
+          <div class="mx-auto my-auto">
+            <h2 class="text-2xl text-center font-bold">Cardiovascular Disease Prediction (ML)</h2>
+          <form id="form" class=" mx-auto mt-8 my-auto">
+              <div class="grid grid-cols-2 gap-2">
+                  <div>
+                      <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="age">Age(Days):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="number" name="age" value="18291" required>
+                        </div>
+                        <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="sex">Gender:</label>
+                          <select class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="gender" name="gender" required>
+                            <option value="">Select</option>
+                            <option selected value="1">Female</option>
+                            <option value="2">Male</option>
+                          </select>
+                        </div>
+                        <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="activity">Height(cm):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="height" type="number" name="height" value="150" required>
+                        </div>
+                        <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="activity">Weight(Kg):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="weight" type="number" name="weight" value="153" required>
+                        </div>
+                        <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="bp">Systolic Blood Pressure(mmHg):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="systolic_bp" type="number" name="systolic_bp" value="120" required>
+                        </div>
+                        <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="bp">Diastolic Blood Pressure(mmHg):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="diastolic_bp" type="number" name="diastolic_bp"  value="80" required>
+                        </div>
                   </div>
-                  <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="sex">Gender:</label>
-                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="gender" name="gender" required>
-                      <option value="">Select</option>
-                      <option selected value="1">Female</option>
-                      <option value="2">Male</option>
-                    </select>
+                  <div>
+                      <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="sex">Cholestrol</label>
+                          <select class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="cholesterol" name="cholesterol" required>
+                            <option value="">Select</option>
+                            <option value="1">Normal</option>
+                            <option selected value="2">Above Normal</option>
+                            <option value="3">Well Above Normal</option>
+                          </select>
+                        </div>
+                      <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="sex">Glucose</label>
+                          <select class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="glucose" name="glucose" required>
+                            <option value="">Select</option>
+                            <option selected value="1">Normal</option>
+                            <option value="2">Above Normal</option>
+                            <option value="3">Well Above Normal</option>
+                          </select>
+                        </div>
+                      <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="activity">Smoke(yes=1, 0=no):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="smoke" type="number" oninput="validateInput(this)" name="smoke" min="0" max="1" step="1" value="0"  required>
+                        </div>
+                      <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="activity">Alcohol(yes=1, 0=no):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="alco" type="number" oninput="validateInput(this)" name="alco" min="0" max="1" step="1" value="0" required>
+                        </div>
+                      <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="activity">Physical Activity(presence=1, 0=absence):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="active" type="number" oninput="validateInput(this)" name="active" min="0" max="1" step="1"  value="1" required>
+                        </div>
+                      <div class="mb-4">
+                          <label class="block text-dark-700 font-bold mb-2" for="activity">Prediction</label>
+                          <div class="flex justify-center" id="prediction-output"></div>
+                        </div>
+                      
                   </div>
-                  <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="activity">Height(cm):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="height" type="number" name="height" value="150" required>
-                  </div>
-                  <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="activity">Weight(Kg):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="weight" type="number" name="weight" value="153" required>
-                  </div>
-                  <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="bp">Systolic Blood Pressure(mmHg):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="systolic_bp" type="number" name="systolic_bp" value="120" required>
-                  </div>
-                  <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="bp">Diastolic Blood Pressure(mmHg):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="diastolic_bp" type="number" name="diastolic_bp"  value="80" required>
-                  </div>
+            
+                </div>
+            <input type="hidden" name="prediction">
+            <div id="overlay">
+              <div id="overlay-text">Working...</div>
             </div>
-            <div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="sex">Cholestrol</label>
-                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="cholesterol" name="cholesterol" required>
-                      <option value="">Select</option>
-                      <option value="1">Normal</option>
-                      <option selected value="2">Above Normal</option>
-                      <option value="3">Well Above Normal</option>
-                    </select>
-                  </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="sex">Glucose</label>
-                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="glucose" name="glucose" required>
-                      <option value="">Select</option>
-                      <option selected value="1">Normal</option>
-                      <option value="2">Above Normal</option>
-                      <option value="3">Well Above Normal</option>
-                    </select>
-                  </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="activity">Smoke(yes=1, 0=no):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="smoke" type="number" oninput="validateInput(this)" name="smoke" min="0" max="1" step="1" value="0"  required>
-                  </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="activity">Alcohol(yes=1, 0=no):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="alco" type="number" oninput="validateInput(this)" name="alco" min="0" max="1" step="1" value="0" required>
-                  </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2" for="activity">Physical Activity(presence=1, 0=absence):</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="active" type="number" oninput="validateInput(this)" name="active" min="0" max="1" step="1"  value="1" required>
-                  </div>
-                
+            <div class="flex items-center justify-between">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Submit
+              </button>
             </div>
-      
+          </form>
+          <br>
+          <hr>
+          <!--<div class="flex justify-center" id="prediction-output"></div>-->
+          <div class="flex justify-center">
+            <img id="plot">
           </div>
-      <input type="hidden" name="prediction">
-      <div id="overlay">
-        <div id="overlay-text">Working...</div>
-      </div>
-      <div class="flex items-center justify-between">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-          Submit
-        </button>
-      </div>
-    </form>
-    <hr>
-    <form id="ask" class="ask">
-      <div>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="activity">Ask</label>
-          <textarea name="qn" id="qn" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" cols="30" rows="2"></textarea>
+          </div>
         </div>
+        <form id="ask" class="ask">
+        <div class="input">
+          <textarea name="qn" id="qn" class="input-field" placeholder="Type your query here..."></textarea>
+          <div class="send-icon">
+            <!-- Send icon goes here -->
+          </div>
+        </div>
+        </form>
+        <hr>
+        <div class="flex justify-center" id="ask-output"></div>
+
       </div>
-    </form>
-    <div class="flex justify-center" id="ask-output"></div>
-    <hr>
-    <div class="flex justify-center" id="prediction-output"></div>
-    <div class="flex justify-center">
-      <img id="plot">
     </div>
-    <script>
-const askForm = document.querySelector('.ask');
-const askOutput = document.getElementById("ask-output");
-const askInput = document.getElementById("qn");
-
-
-askInput.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    // Trigger the form's submit event
-
-    const question = askForm.elements["qn"].value;
-
-    //send natural lang text to api,
-    fetch("/ask", {
-    method: "POST",
-    body: JSON.stringify({
-      text: question,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((response) => response.json())
-    .then((data) => {
-      askOutput.innerText = `Prediction: ${data.predictiontext}`;
-    })
-
-  }
-});
-
-
-function validateInput(inputElement) {
-  const inputValue = inputElement.value;
-  const validValues = ["0", "1"];
-
-  if (!validValues.includes(inputValue)) {
-    inputElement.value = "";
-    alert("Please enter only '0' or '1'");
-  }
-}
-
-// Get references to the form and prediction output elements
-const form = document.querySelector("#form");
-const predictionOutput = document.getElementById("prediction-output");
-const overlay = document.getElementById("overlay");
-const plot = document.querySelector('#plot');
-
-// Handle the form submit event
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  // Show the overlay
-  overlay.style.display = "block";
-
-  // Get the user inputs from the form
-  const Age = form.elements["age"].value;
-  const Gender = form.elements["gender"].value;
-  const Height = form.elements["height"].value;
-  const Weight = form.elements["weight"].value;
-  const Systolic_bp = form.elements["systolic_bp"].value;
-  const Diastolic_bp = form.elements["diastolic_bp"].value;
-  const Cholesterol = form.elements["cholesterol"].value;
-  const Glucose = form.elements["glucose"].value;
-  const Smoke = form.elements["smoke"].value;
-  const Alco = form.elements["alco"].value;
-  const PhysicalActivity = form.elements["active"].value;
-
-  // Make the prediction using the Flask API
-  fetch("/", {
-    method: "POST",
-    body: JSON.stringify({
-      age: Age,
-      gender: Gender,
-      height: Height,
-      weight: Weight,
-      systolic_bp: Systolic_bp,
-      diastolic_bp: Diastolic_bp,
-      cholesterol: Cholesterol,
-      glucose: Glucose,
-      smoke: Smoke,
-      alco: Alco,
-      active: PhysicalActivity,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // Hide the overlay after 3 seconds
-      setTimeout(() => {
-        overlay.style.display = "none";
-        // Update the contents of the prediction output field
-        predictionOutput.innerText = `Prediction: ${data.prediction}  | Accuracy: ${data.accuracy}%`;
-        form.elements["prediction"].value = data.prediction;
-        plot.src = 'data:image/png;base64,' + data.plot;
-        console.log(data.prediction);
-        console.log(data.accuracy);
-        console.log(data.plot);
-      }, 2500);
-    });
-});
-
-// Handle changes to the form inputs
-form.addEventListener("input", () => {
-  // Reset the prediction output and prediction input field
-  predictionOutput.innerText = "";
-  form.elements["prediction"].value = "";
-});
-
-    </script>
-
-
-
-    <style>
-*{
-  font-size: small !important;
-}
-#overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  justify-content: center;
-  align-items: center;
-}
-
-#overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 2em;
-}
-
-textarea {
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding: 10px;
-}
-
-textarea::after {
-  content: '|';
-  display: inline-block;
-  margin-left: 2px;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-
-    </style>
-    
-    </div>
+    <script src="{{ url_for('static',filename='js/app.js') }}"></script>
   </body>
 </html>

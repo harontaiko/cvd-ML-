@@ -1,9 +1,8 @@
 ## Cardiovascular Input based Prediction (ML)
 The given code consists of an HTML form that collects user input, a Flask application that loads a dataset, trains a random forest classifier on it, and provides a function to predict cardiovascular disease based on user input, and JavaScript code that sends user input to the Flask API and displays the result on the webpage.
 
-The HTML form collects the user's age, sex, physical activity, and blood pressure. The Flask application loads a dataset called cardiovascular_data.csv, which is presumably a dataset of individuals with and without cardiovascular disease, and trains a random forest classifier on the dataset. The provided function predict() takes user input and uses the trained model to predict whether the user is likely to have cardiovascular disease or not. The JavaScript code sends the user input to the Flask API and displays the prediction result on the webpage.
+The HTML form collects the user's input as described in the features below. The Flask application loads a dataset called cardio_train.csv, which is a dataset of individuals with and without cardiovascular disease, and trains a random forest classifier on the dataset. The JavaScript code sends the user input to the Flask API and displays the prediction result on the webpage.
 
-Overall, the code appears to be a basic implementation of a machine learning model deployed as a web application.
 
 ## Natural Language Processing(Interpreting direct human input)
 - Apart from prediction, accuracy scores and graphical metrics
