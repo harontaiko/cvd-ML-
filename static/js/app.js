@@ -3,6 +3,20 @@ const askOutput = document.getElementById("ask-output");
 const askInput = document.getElementById("qn");
 let myListItem = document.querySelector('.predictions-list');
 
+function convertYearsToDays(years) {
+  const daysInYear = 365; // assume 365 days in a year
+  return years * daysInYear;
+}
+
+const yearsInput = document.getElementById('years-input');
+const daysOutput = document.getElementById('days-output');
+
+yearsInput.addEventListener('input', () => {
+  const years = Number(yearsInput.value);
+  const days = convertYearsToDays(years);
+  daysOutput.textContent = days;
+});
+
 
 
 askInput.addEventListener("keyup", function(event) {
