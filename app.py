@@ -1,3 +1,4 @@
+import unittest
 import base64
 import spacy
 from flask import Flask, render_template, request
@@ -221,6 +222,11 @@ def index():
     prediction = clf.predict(X_preprocessed)
     plot_url = plot_graph(df, prediction)
     return render_template("index.html", plot=plot_url)
+
+
+@app.route("/docs")
+def docs():
+    return render_template("docs.html")
 
 
 if __name__ == "__main__":

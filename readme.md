@@ -30,6 +30,14 @@ Features:
 - Physical activity | Subjective Feature | active | binary | ✓
 - Presence or absence of cardiovascular disease | Target Variable | cardio | binary | ✓
 
-**All of the dataset values were collected at the moment of medical examination.**
+> **All of the dataset values were collected at the moment of medical examination.**
+> 
+> _The dataset consists of 70 000 records of patients data, 11 features + target._
 
-_The dataset consists of 70 000 records of patients data, 11 features + target._
+## Installing and running (locally & Production)
+- Pre-requisites (Python3, pip, vscode(or other IDE))
+- run `pip install` to install necessary packages
+- run `python -m venv env` to create a virtual envirnment
+- activate the environmnet through `projectfolder\env\Scripts\Activate`
+- run `python app.py`, the app will open on port `5000 or any free localhost port`
+- The production version is found at [Heroku](https://cvd-ml-haron.herokuapp.com)

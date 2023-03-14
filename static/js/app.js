@@ -14,11 +14,11 @@ const daysOutput = document.getElementById('days-output');
 yearsInput.addEventListener('input', () => {
   const years = Number(yearsInput.value);
   const days = convertYearsToDays(years);
-  daysOutput.textContent = days;
+  daysOutput.textContent = days + ' Days ';
 });
 
 
-
+/*
 askInput.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -38,7 +38,7 @@ askInput.addEventListener("keyup", function(event) {
   }).then((response) => response.json())
     .then((data) => {
       console.log(data);
-      /*const result = data.predictiontext;
+      const result = data.predictiontext;
       //simulate typing animation(like real human in real time)
       let i = 0;
       const interval = setInterval(() => {
@@ -47,12 +47,12 @@ askInput.addEventListener("keyup", function(event) {
         if(i > result.length){
           clearInterval(interval);
         }
-      }, 100);*/
+      }, 100);
       //askOutput.innerText = `Prediction: ${data.predictiontext}`;
     })
 
   }
-});
+});*/
 
 document.addEventListener('DOMContentLoaded', ()=>{
     Object.keys(localStorage).forEach(function(key) {

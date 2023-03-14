@@ -1,6 +1,10 @@
 *{
     font-size: small !important;
   }
+
+  .text-heading{
+    font-size: large !important;
+  }
   #overlay {
     position: fixed;
     display: none;
