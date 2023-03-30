@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 nlp = spacy.load('en_core_web_sm')
 
-# Load the data into a pandas DataFrame
+# Load data into pandas
 df = pd.read_csv("templates/cardio_train.csv", sep=";")
 df.columns = ['id', 'age', 'gender', 'height', 'weight', 'systolic_bp',
               'diastolic_bp', 'cholesterol', 'glucose', 'smoke', 'alco', 'active', 'cardio']
@@ -34,7 +34,7 @@ def preprocess_data(df):
 
 df = preprocess_data(df)
 
-# Split the data into features and target
+# Split
 X = df.drop("cardio", axis=1)
 y = df["cardio"]
 
@@ -61,21 +61,20 @@ def calculate_accuracy(user_data):
     return accuracy_percentage
 
 
-def plot_graph(df, prediction):
-    fig, ax = plt.subplots(figsize=(10, 8))
-    colors = ["red" if p == 1 else "green" for p in prediction]
-    ax.scatter(df["age"], df["systolic_bp"], color=colors, alpha=0.5, s=50)
-    ax.set_xlabel("Age")
-    ax.set_ylabel("Systolic Blood Pressure")
-    ax.set_title(
-        "Correlation between Age, Systolic Blood Pressure and Cardiovascular Disease")
-    ax.grid(True)
-    # Convert the plot to a base64 encoded string
+def plot_graph(clf, X):
+    feature_importances = pd.Series(clf.feature_importances_, index=X.columns)
+    feature_importances = feature_importances.sort_values(ascending=False)
+    plt.figure(figsize=(10, 8))
+    plt.title("Feature Importances")
+    plt.bar(feature_importances.index, feature_importances.values)
+    plt.xticks(rotation=90)
+    plt.tight_layout()
     img = io.BytesIO()
-    fig.savefig(img, format="png")
+    plt.savefig(img, format="png")
     img.seek(0)
     plot_url = base64.b64encode(img.getvalue()).decode()
     return plot_url
+
 
 
 nlp = spacy.load('en_core_web_sm')
@@ -203,7 +202,7 @@ def predict():
 
         prediction = clf.predict(inputs)
 
-        plot_url = plot_graph(inputs, prediction)
+        plot_url = plot_graph(clf, X)
 
         # Calculate accuracy in % of the prediction
         accuracy_percentage = calculate_accuracy(user_data)
@@ -220,7 +219,7 @@ def index():
 
     X_preprocessed = preprocess_data(X)
     prediction = clf.predict(X_preprocessed)
-    plot_url = plot_graph(df, prediction)
+    plot_url = plot_graph(clf, X)
     return render_template("index.html", plot=plot_url)
 
 
