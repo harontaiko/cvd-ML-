@@ -3,6 +3,15 @@ The given code consists of an HTML form that collects user input, a Flask applic
 
 The HTML form collects the user's input as described in the features below. The Flask application loads a dataset called cardio_train.csv, which is a dataset of individuals with and without cardiovascular disease, and trains a random forest classifier on the dataset. The JavaScript code sends the user input to the Flask API and displays the prediction result on the webpage.
 
+## Output Graph
+- feature importances from the trained clf classifier.
+
+- Sorting feature importances in descending order using `np.argsort()` and reverse the order using `[::-1]`
+
+- Reorder the user data according to the sorted feature importances.
+
+- plot graph
+
 
 ## Natural Language Processing(Interpreting direct human input)
 - Apart from prediction, accuracy scores and graphical metrics

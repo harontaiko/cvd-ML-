@@ -171,4 +171,5 @@ form.addEventListener("input", () => {
   // Reset the prediction output and prediction input field
   predictionOutput.innerText = "";
   form.elements["prediction"].value = "";
+  plot.src = '';
 });

@@ -61,110 +61,23 @@ def calculate_accuracy(user_data):
     return accuracy_percentage
 
 
-def plot_graph(clf, X):
-    feature_importances = pd.Series(clf.feature_importances_, index=X.columns)
-    feature_importances = feature_importances.sort_values(ascending=False)
+def plot_graph(clf, X, user_df):
+    feature_importances = clf.feature_importances_
+    sorted_indices = np.argsort(feature_importances)[::-1]
+    sorted_feature_names = X.columns[sorted_indices]
+    user_df = user_df[sorted_feature_names]
     plt.figure(figsize=(10, 8))
-    plt.title("Feature Importances")
-    plt.bar(feature_importances.index, feature_importances.values)
+    plt.title("Feature Importance")
+    plt.bar(user_df.columns, user_df.values[0])
     plt.xticks(rotation=90)
     plt.tight_layout()
-    img = io.BytesIO()
-    plt.savefig(img, format="png")
-    img.seek(0)
-    plot_url = base64.b64encode(img.getvalue()).decode()
-    return plot_url
+    img2 = io.BytesIO()
+    plt.savefig(img2, format="png")
+    img2.seek(0)
+    plot_url2 = base64.b64encode(img2.getvalue()).decode()
+    return plot_url2
 
-
-
-nlp = spacy.load('en_core_web_sm')
-
-
-def process_text(text):
-    doc = nlp(text)
-    age = None
-    gender = None
-    height = None
-    weight = None
-    systolic_bp = None
-    diastolic_bp = None
-    cholesterol = None
-    glucose = None
-    smoke = None
-    alco = None
-    active = None
-
-    # Extract information from the text
-    for ent in doc.ents:
-        if ent.label_ == 'AGE':
-            age = int(ent.text)
-        elif ent.label_ == 'GENDER':
-            gender = 1 if ent.text.lower() == 'male' else 0
-        elif ent.label_ == 'HEIGHT':
-            height = float(ent.text.split()[0])
-        elif ent.label_ == 'WEIGHT':
-            weight = float(ent.text.split()[0])
-        elif ent.label_ == 'SYS':
-            systolic_bp = int(ent.text)
-        elif ent.label_ == 'DIA':
-            diastolic_bp = int(ent.text)
-        elif ent.label_ == 'CHOL':
-            cholesterol = int(ent.text)
-        elif ent.label_ == 'GLUCOSE':
-            glucose = int(ent.text)
-        elif ent.label_ == 'SMOKE':
-            smoke = 1 if ent.text.lower() == 'yes' else 0
-        elif ent.label_ == 'ALCO':
-            alco = 1 if ent.text.lower() == 'yes' else 0
-        elif ent.label_ == 'ACTIVE':
-            active = 1 if ent.text.lower() == 'yes' else 0
-
-    # Create a new DataFrame with the extracted information
-    user_data_n = pd.DataFrame({
-        "age": [age],
-        "gender": [gender],
-        "height": [height],
-        "weight": [weight],
-        "systolic_bp": [systolic_bp],
-        "diastolic_bp": [diastolic_bp],
-        "cholesterol": [cholesterol],
-        "glucose": [glucose],
-        'smoke': [smoke],
-        'alco': [alco],
-        'active': [active]
-    })
-
-    # Preprocess the data
-    inputs_n = preprocess_data(user_data_n)
-
-    # Make the prediction using the trained model
-    prediction_n = clf.predict(inputs_n)
-
-    # Return the prediction in natural language
-    if prediction_n[0] == 1:
-        return "High likelihood of cardiovascular disease."
-    else:
-        return "Low likelihood of cardiovascular disease."
-
-# Predict function/runs natural language fx
-
-
-@app.route("/ask", methods=["POST"])
-def predictn():
-    try:
-        data = request.get_json()
-        text = data['text']
-
-        # Process the text to extract relevant information and make a prediction
-        predictiontext = process_text(text)
-
-        # Return the prediction in natural language
-        return {'predictiontext': predictiontext}
-
-    except Exception as e:
-        return {'error': str(e)}
-
-
+    
 # Function to make a prediction based on user inputs and plot the graph
 @app.route("/", methods=["POST"])
 def predict():
@@ -202,7 +115,7 @@ def predict():
 
         prediction = clf.predict(inputs)
 
-        plot_url = plot_graph(clf, X)
+        plot_url = plot_graph(clf, X, inputs)
 
         # Calculate accuracy in % of the prediction
         accuracy_percentage = calculate_accuracy(user_data)
@@ -216,11 +129,7 @@ def predict():
 
 @app.route("/")
 def index():
-
-    X_preprocessed = preprocess_data(X)
-    prediction = clf.predict(X_preprocessed)
-    plot_url = plot_graph(clf, X)
-    return render_template("index.html", plot=plot_url)
+    return render_template("index.html")
 
 
 @app.route("/docs")
