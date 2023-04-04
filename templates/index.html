@@ -129,14 +129,26 @@
         <div class="messages">
           <div class="mx-auto my-auto">
             <h2 class="text-2xl text-center font-bold text-heading">Cardiovascular Disease Prediction (ML)</h2>
-            <div class="border-orange-600 mx-auto">
-              <div class="mb-4">
-                <label class="block text-dark-700 font-bold mb-2" for="activity">Convert Years to Days</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="years-input" type="number" name="years-input">
-                <br>
-                <ul class="mt-2 w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">   
-                  <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600" id="days-output"> Days </li>
-                </ul>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="border-orange-600 mx-auto">
+                <div class="mb-4">
+                  <label class="block text-dark-700 font-bold mb-2" for="activity">Convert Years to Days</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="years-input" type="number" name="years-input">
+                  <br>
+                  <ul class="mt-2 w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">   
+                    <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600" id="days-output"> Days </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="border-orange-600 mx-auto">
+                <div class="mb-4">
+                  <label class="block text-dark-700 font-bold mb-2" for="activity">Convert Days to Years</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="days-input" type="number" name="days-input">
+                  <br>
+                  <ul class="mt-2 w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">   
+                    <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600" id="years-output"> Years </li>
+                  </ul>
+                </div>
               </div>
             </div>
           <form id="form" class=" mx-auto mt-8 my-auto">
@@ -163,12 +175,12 @@
                           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="weight" type="number" name="weight" value="153" required>
                         </div>
                         <div class="mb-4">
-                          <label class="block text-dark-700 font-bold mb-2" for="bp">Systolic Blood Pressure(mmHg):</label>
-                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="systolic_bp" type="number" name="systolic_bp" value="120" required>
+                          <label class="block text-dark-700 font-bold mb-2" for="bp" title="a unit of pressure equal to the pressure exerted by a column of mercury 1 millimeter high at 0°C and under the acceleration of gravity and nearly equivalent to 1 torr (about 133.3 pascals)">Systolic Blood Pressure(mmHg):</label>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="systolic_bp" type="number"  title="indicates how much pressure your blood is exerting against your artery walls when the heart beats." name="systolic_bp" value="120" required>
                         </div>
                         <div class="mb-4">
                           <label class="block text-dark-700 font-bold mb-2" for="bp">Diastolic Blood Pressure(mmHg):</label>
-                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="diastolic_bp" type="number" name="diastolic_bp"  value="80" required>
+                          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark-700 leading-tight focus:outline-none focus:shadow-outline" id="diastolic_bp" type="number" title="Indicates how much pressure your blood is exerting against your artery walls while the heart is resting between beats" name="diastolic_bp"  value="80" required>
                         </div>
                   </div>
                   <div>

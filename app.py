@@ -125,7 +125,19 @@ def predict():
 
     except Exception as e:
         return {'error': str(e)}
-
+    
+# class TestAccuracy(unittest.TestCase):
+#    def test_accuracy(self):
+#        test_df = pd.read_csv("templates/cardio_train.csv", sep=";")
+#        test_df.columns = ['id', 'age', 'gender', 'height', 'weight', 'systolic_bp',
+#                      'diastolic_bp', 'cholesterol', 'glucose', 'smoke', 'alco', 'active', 'cardio']
+#        test_df = preprocess_data(test_df)
+#        X_test = test_df.drop("cardio", axis=1)
+#        y_test = test_df["cardio"]
+#        accuracy_percentage = calculate_accuracy(X_test)
+#        self.assertGreaterEqual(accuracy_percentage, 0)
+#        self.assertLessEqual(accuracy_percentage, 100)
+#
 
 @app.route("/")
 def index():
@@ -138,4 +150,5 @@ def docs():
 
 
 if __name__ == "__main__":
+    # unittest.main()
     app.run(debug=True)

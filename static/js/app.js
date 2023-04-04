@@ -8,8 +8,16 @@ function convertYearsToDays(years) {
   return years * daysInYear;
 }
 
+function convertDaystoYears(mdays){
+  const y = 365;
+  return mdays/y;
+}
+
 const yearsInput = document.getElementById('years-input');
 const daysOutput = document.getElementById('days-output');
+
+const daysInput = document.getElementById('days-input');
+const yearsOutput = document.getElementById('years-output');
 
 yearsInput.addEventListener('input', () => {
   const years = Number(yearsInput.value);
@@ -17,6 +25,11 @@ yearsInput.addEventListener('input', () => {
   daysOutput.textContent = days + ' Days ';
 });
 
+daysInput.addEventListener('input', () => {
+  const mdays = Number(daysInput.value);
+  const myears = convertDaystoYears(mdays);
+  yearsOutput.textContent = myears + ' Years';
+})
 
 /*
 askInput.addEventListener("keyup", function(event) {

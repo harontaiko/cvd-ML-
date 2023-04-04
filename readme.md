@@ -1,7 +1,5 @@
 ## Cardiovascular Input based Prediction (ML)
-The given code consists of an HTML form that collects user input, a Flask application that loads a dataset, trains a random forest classifier on it, and provides a function to predict cardiovascular disease based on user input, and JavaScript code that sends user input to the Flask API and displays the result on the webpage.
-
-The HTML form collects the user's input as described in the features below. The Flask application loads a dataset called cardio_train.csv, which is a dataset of individuals with and without cardiovascular disease, and trains a random forest classifier on the dataset. The JavaScript code sends the user input to the Flask API and displays the prediction result on the webpage.
+This code defines a Flask app that receives user input about cardiovascular disease risk factors, predicts whether the user has a high or low likelihood of having cardiovascular disease, and returns the prediction along with a plot showing the feature importance for the prediction. The app loads a dataset of cardiovascular disease risk factors, trains a random forest classifier on the data, and calculates the model's accuracy. When a user submits their data, the app preprocesses the data, makes a prediction using the trained model, calculates the accuracy of the prediction, and creates a plot of the feature importance. Finally, the app returns the prediction, plot, and accuracy to the user.
 
 ## Output Graph
 - feature importances from the trained clf classifier.
